@@ -21,7 +21,6 @@ COPY --from=build /app/out .
 
 # Expose the port (Render will set PORT environment variable)
 EXPOSE 8080
-ENV ASPNETCORE_URLS=http://+:8080
 
 # Start the application
 ENTRYPOINT ["dotnet", "AzureSite.dll"]
