@@ -22,9 +22,11 @@ app.MapControllerRoute(
 
 // Use PORT environment variable if provided (for Render, Heroku, etc.)
 var port = Environment.GetEnvironmentVariable("PORT");
-if (!string.IsNullOrEmpty(port) && int.TryParse(port, out var portNumber))
+if (!string.IsNullOrEmpty(port))
 {
-    app.Urls.Add($"http://+:{portNumber}");
+    app.Run($"http://+:{port}");
 }
-
-app.Run();
+else
+{
+    app.Run();
+}

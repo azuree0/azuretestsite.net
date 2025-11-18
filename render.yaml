@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: azuretestsite-net
+    name: azuretestsite
     runtime: docker
     plan: free
     dockerfilePath: ./Dockerfile
