@@ -1,3 +1,8 @@
+https://azuretestsite.onrender.com
+
+<img width="2537" height="1143" alt="a" src="https://github.com/user-attachments/assets/96b28a87-13a6-4f72-841e-be1cfcf56a1d" />
+
+
 ## Project Structure
 
 ```
@@ -66,106 +71,3 @@ site/
 
 3. **Access the site**:
    Whatever localhost, dotnet run prints in the console.
-
-## Deployment to Render
-
-This project is configured for deployment to [Render.com](https://render.com) (Free Tier) with the domain `azuretestsite.net`.
-
-### Quick Start Deployment
-
-#### Step 1: Push Code to GitHub
-
-1. **Initialize Git** (if not already done):
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   ```
-
-2. **Create GitHub Repository**:
-   - Go to [GitHub](https://github.com) and create a new repository
-   - Push your code:
-     ```bash
-     git remote add origin https://github.com/yourusername/your-repo.git
-     git branch -M main
-     git push -u origin main
-     ```
-
-#### Step 2: Deploy to Render
-
-1. **Sign up for Render**:
-   - Go to [render.com](https://render.com)
-   - Sign up for a free account (GitHub login available)
-
-2. **Create New Web Service**:
-   - In Render Dashboard, click **New** → **Web Service**
-   - Connect your GitHub repository
-   - Render will auto-detect the `render.yaml` configuration
-
-3. **Configure Service** (or use render.yaml):
-   - **Name:** `azuretestsite`
-   - **Region:** Choose closest to your users
-   - **Branch:** `main`
-   - **Runtime:** `Docker` (auto-detected from Dockerfile)
-   - **Plan:** `Free`
-
-4. **Deploy**:
-   - Click **Create Web Service**
-   - Render will build and deploy automatically
-   - Your site will be available at: `https://azuretestsite.onrender.com`
-
-### Custom Domain Setup (azuretestsite.net)
-
-1. **Add Custom Domain in Render**:
-   - Go to your service → **Settings** → **Custom Domains**
-   - Click **Add Custom Domain**
-   - Enter: `azuretestsite.net`
-
-2. **Configure DNS**:
-   - Render will provide DNS instructions
-   - Add a CNAME record at your domain registrar:
-     - **Name:** `@` or `azuretestsite.net`
-     - **Value:** The CNAME target provided by Render
-   - Or add an A record with the IP address provided
-
-3. **SSL Certificate**:
-   - Render automatically provisions free SSL certificates
-   - HTTPS will be enabled once DNS propagates (usually within minutes)
-
-### Deployment Files
-
-- `Dockerfile` - Docker configuration for .NET 8
-- `render.yaml` - Render service configuration
-
-### Prerequisites
-
-- GitHub account
-- Render account (free tier available)
-- Domain registered (for custom domain - optional)
-- .NET 8.0 SDK (for local development)
-
-### Render Free Tier Features
-
-- ✅ Free SSL certificates
-- ✅ Automatic deployments from Git
-- ✅ Custom domains
-- ✅ 750 hours/month compute time
-- ✅ 100 GB bandwidth/month
-- ⚠️ Services spin down after 15 minutes of inactivity (free tier)
-- ⚠️ First request after spin-down may take 30-60 seconds
-
-### Manual Deployment (Alternative)
-
-If you prefer not to use Git:
-
-1. **Build Docker image locally**:
-   ```bash
-   docker build -t azuretestsite .
-   ```
-
-2. **Test locally**:
-   ```bash
-   docker run -p 8080:8080 azuretestsite
-   ```
-
-3. **Push to Docker Hub** and connect to Render
