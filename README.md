@@ -108,25 +108,47 @@ This project is configured for deployment to [Render.com](https://render.com) (F
 4. **Deploy**:
    - Click **Create Web Service**
    - Render will build and deploy automatically
-   - Your site will be available at: `https://azuretestsite.onrender.com`
+   - Your site will initially be available at: `https://azuretestsite.onrender.com`
+   - After setting up custom domain: `https://azuretestsite.net`
 
-### Custom Domain Setup (azuretestsite.net)
+### Custom Domain Setup (azuretestsite.net) - **Required for azuretestsite.net**
+
+**To use `azuretestsite.net` as your primary domain:**
 
 1. **Add Custom Domain in Render**:
-   - Go to your service → **Settings** → **Custom Domains**
+   - Go to your Render dashboard → Your service (`azuretestsite`)
+   - Click **Settings** tab
+   - Scroll to **Custom Domains** section
    - Click **Add Custom Domain**
    - Enter: `azuretestsite.net`
+   - Click **Save**
 
-2. **Configure DNS**:
-   - Render will provide DNS instructions
-   - Add a CNAME record at your domain registrar:
-     - **Name:** `@` or `azuretestsite.net`
-     - **Value:** The CNAME target provided by Render
-   - Or add an A record with the IP address provided
+2. **Configure DNS at Your Domain Registrar**:
+   - Render will show DNS configuration instructions
+   - **Option A - CNAME (Recommended):**
+     - Add a CNAME record:
+       - **Type:** CNAME
+       - **Name/Host:** `@` or `azuretestsite.net` (root domain)
+       - **Value/Target:** The CNAME target provided by Render (e.g., `azuretestsite.onrender.com`)
+       - **TTL:** 3600 (or default)
+   - **Option B - A Record:**
+     - Add an A record with the IP address provided by Render
+     - Less common, use if CNAME doesn't work
 
-3. **SSL Certificate**:
-   - Render automatically provisions free SSL certificates
-   - HTTPS will be enabled once DNS propagates (usually within minutes)
+3. **Wait for DNS Propagation**:
+   - DNS changes can take 5 minutes to 48 hours
+   - Usually completes within 1-2 hours
+   - Check propagation: `nslookup azuretestsite.net` or use online DNS checker
+
+4. **SSL Certificate (Automatic)**:
+   - Render automatically provisions free SSL certificates via Let's Encrypt
+   - HTTPS will be enabled automatically once DNS propagates
+   - Usually takes a few minutes after DNS is verified
+
+5. **Verify Domain**:
+   - Render will verify the domain automatically
+   - Check status in Render dashboard → Settings → Custom Domains
+   - Once verified, `https://azuretestsite.net` will be live
 
 ### Deployment Files
 
