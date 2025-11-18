@@ -1,11 +1,7 @@
-https://azuretestsite-net.onrender.com/
-
-<img width="2537" height="1143" alt="a" src="https://github.com/user-attachments/assets/46ee6ae4-556d-457d-9d40-a666cd2932e0" />
-
 ## Project Structure
 
 ```
-AzureSite/
+site/
 ├── Controllers/
 │   └── HomeController.cs      # Main controller with actions (Index, About, Projects, Contact)
 ├── Models/
@@ -29,6 +25,7 @@ AzureSite/
 │   │   └── site.css           # Custom sci-fi/architecture styles
 │   ├── js/
 │   │   ├── buildings3d.js     # 3D buildings animation (Three.js)
+│   │   ├── buildings.wasm     # WebAssembly for 3D rendering
 │   │   └── site.js            # Interactive JavaScript effects
 │   └── lib/                   # Third-party libraries
 │       ├── bootstrap/          # Bootstrap 5 framework
@@ -37,8 +34,11 @@ AzureSite/
 │       └── jquery-validation-unobtrusive/ # Unobtrusive validation
 ├── Properties/
 │   └── launchSettings.json   # Launch configuration
-├── Program.cs                 # Application entry point
-└── AzureSite.csproj          # Project file
+├── Dockerfile                # Docker configuration for Render deployment
+├── render.yaml               # Render service configuration
+├── Program.cs                # Application entry point
+├── AzureSite.csproj          # Project file
+└── appsettings.json          # Application settings
 ```
 
 ## Tech Stack
@@ -136,7 +136,6 @@ This project is configured for deployment to [Render.com](https://render.com) (F
 
 - `Dockerfile` - Docker configuration for .NET 8
 - `render.yaml` - Render service configuration
-- `.github/workflows/` - GitHub Actions workflows (optional)
 
 ### Prerequisites
 
@@ -170,5 +169,3 @@ If you prefer not to use Git:
    ```
 
 3. **Push to Docker Hub** and connect to Render
-
-For detailed deployment instructions, see [RENDER-DEPLOY.md](RENDER-DEPLOY.md).
